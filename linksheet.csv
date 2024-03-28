@@ -1,0 +1,8 @@
+/,index.html
+/about,about.html
+/home,index.html
+/links,links.html
+/weird-meese,weirdmeese.html
+#articles
+/projects/test,template/project/posts/projects/test-projects.html
+/projects/fuzz-pedal,template/project/posts/projects/fuzzpedal.html
