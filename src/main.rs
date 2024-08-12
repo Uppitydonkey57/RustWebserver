@@ -11,8 +11,7 @@ mod response;
 
 fn main() {
     let args: Vec<_> = env::args().collect(); // arg1 = site path
-    let listener = TcpListener::bind("127.0.0.1:8080").expect("Failed to connect to localhost");
-    let path = "./site-data/".to_string();
+    let listener = TcpListener::bind("127.0.0.1:8080").expect("Failed to connect to localhost"); let path = "./site-data/".to_string(); // global ip: 0.0.0.0:80, local ip: 127.0.0.1:8080
     for stream in listener.incoming() {
         let stream = stream.unwrap();
         handle_request(stream, &generate_link_map(), if args.len() > 1 { &args[1] } else { &path });
