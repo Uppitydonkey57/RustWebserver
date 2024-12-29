@@ -11,7 +11,8 @@ mod response;
 
 fn main() {
     let args: Vec<_> = env::args().collect(); // arg1 = site path
-    let listener = TcpListener::bind("127.0.0.1:8080").expect("Failed to connect to localhost"); let path = "./site-data/".to_string(); // global ip: 0.0.0.0:80, local ip: 127.0.0.1:8080
+    let listener = TcpListener::bind("0.0.0.0:80").expect("Failed to connect to localhost"); let path = "./site-data/".to_string(); // global ip: 0.0.0.0:80, local ip: 127.0.0.1:8080
+    //let listener = TcpListener::bind("127.0.0.1:8080").expect("Failed to connect to localhost"); let path = "./site-data/".to_string(); // global ip: 0.0.0.0:80, local ip: 127.0.0.1:8080
     for stream in listener.incoming() {
         let stream = stream.unwrap();
         handle_request(stream, &generate_link_map(), if args.len() > 1 { &args[1] } else { &path });
@@ -20,7 +21,19 @@ fn main() {
 
 fn handle_request(mut stream: TcpStream, links: &HashMap<String, String>, site_data_path: &String) {
     let buffer = BufReader::new(&mut stream);
-    let lines: Vec<String> = buffer.lines().map(|result| result.unwrap()).take_while(|line| !line.is_empty()).collect();
+    let mut abort: bool = false;
+    let lines: Vec<String> = buffer.lines().map(|result| 
+        match result {
+            Ok(result) => result,
+            Err(..) => { 
+                abort = true;
+                String::from("ERROR")
+            },
+        })
+        .take_while(|line| !line.is_empty()).collect();
+    if abort { // abort if attempting to connect through https
+        return;
+    }
     println!("{:?}", lines);
     let status = "HTTP/1.1 200 OK";
     let link404 = ("404error.html".to_string(), "./site-data/404error.html".to_string());

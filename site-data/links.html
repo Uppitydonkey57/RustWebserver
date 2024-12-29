@@ -1,20 +1,82 @@
 <html>
 	<head>
+		<title>Cool Links</title>
 		<link rel="stylesheet" href="/style.css">
+		<link rel="icon" type="image/x-icon" href="/favicon.ico">
 	</head>
 
 	<body>
+		<a href="http://zachgeyer.space/home" style="position:fixed;top:10px;left:10px;">Back To Home</a>
+		<brk>
 		<h1>Cool Links</h1>
 		<brk>
-		<a>synth blog</a>
-		<a link="projects/nesarticle">nes article</a>
+		<div class="page-holder">
+			<div class="link-set-holder">
+				<div class="link-set">
+					<h1>Articles</h1>
+					<ul>
+						<li><a class="page-link" href="articles/nes-article">nes article</a></li>
+						<li><a class="page-link" href="articles/embedded-guide">embedded guide</a></li>
+						<li><a class="page-link" href="articles/drum-machine-blog"><b>drum machine blog!</b></a></li>
+					</ul>
+				</div>
+				<div class="link-set">
+					<h1>Synth Blog</h1>
+					<ul>
+						<li>Envelope Generator</li>
+						<li>Oscilator</li>
+					</ul>
+				</div>
+				<div class="link-set">
+					<h1>Projects</h1>
+					<ul>
+						<li><a class="page-link" href="projects/fuzz-pedal">Fuzz Pedal</a></li>
+						<li>Phaser Pedal</li>
+					</ul>
+				</div>
+				<div class="link-set">
+					<h1>Other Stuff</h1>
+					<ul>
+						<li><a class="page-link" href="projects/predator-prey-diffeq">Predator Prey Diff Eq Simulation</a></li>
+						<li><a href="https://letterboxd.com/uppitydonkey57/film/hubble/" class="page-link">my letterboxd review of Hubble 3D</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</body>
 	<style>
 		body {
 			background-image: url('https://images-assets.nasa.gov/image/KSC-71PC-0571/KSC-71PC-0571~large.jpg?w=1920&h=1536&fit=clip&crop=faces%2Cfocalpoint');
+			background-attachment: fixed;
 		}
 		a {
 
+		}
+		.page-holder {
+			display: flex;
+			flex-direction: row;
+		}
+		.link-set-holder {
+			display: flex;
+			flex-direction: column;
+			width: 20%;
+			justify-content: flex-start;
+		}
+		.link-set {
+			flex-basis: auto;
+			border-radius: 25px;
+			margin: 10px;
+			border: 7px solid black;
+			background-color: #666666;
+			color: black;
+		}
+		.page-link:link {
+			color: white;
+			text-decoration: underline;
+		}
+		.page-link:visited {
+			color: white;
+			text-decoration: underline;
 		}
 	</style>
 </html>

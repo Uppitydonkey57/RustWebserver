@@ -1,14 +1,20 @@
 <html>
 	<head>
+		<title>{title}</title>
 		<link rel="stylesheet" href="/style.css">
 	</head>
 
 	<body>
-		<br>
-		<h1>{title}</h1>
-		<img src="{image-link}" alt="article picture">
-		<h2>BY ME!</h2>
-		<br>
-		{main-text}
+		<a href="http://zachgeyer.space/home" style="position:fixed;top:10px;right:10px;">Back To Links</a>
+		<div id="article-grid">
+			<div id="article-title">
+				<h1>{title}</h1>
+			</div>
+			<div id="article-body">
+				<img src="{image-link}" alt="article picture">
+			<h2 class="article-text">BY ME!</h2>
+			{main-text}
+			</div>
+		</div>
 	</body>
 </html>
